@@ -40,7 +40,7 @@ export default function About() {
           <div className="relative aspect-square max-w-md mx-auto md:mx-0">
             <div className="absolute inset-0 border-2 border-primary rounded-lg transform translate-x-4 translate-y-4" />
             <div className="relative h-full w-full overflow-hidden rounded-lg bg-muted">
-              <Image src="/placeholder.svg?height=600&width=600" alt="Profile" fill className="object-cover" priority />
+              <Image src="/profile.jpeg" alt="Profile" fill className="object-cover" priority />
             </div>
           </div>
           <div className="space-y-6">
