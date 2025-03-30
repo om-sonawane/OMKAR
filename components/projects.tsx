@@ -7,6 +7,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { useInView } from "framer-motion"
 import { motion } from "framer-motion"
+import { Video } from "lucide-react"
 
 export default function Projects() {
   const ref = useRef(null)
@@ -22,47 +23,48 @@ export default function Projects() {
   const projects = [
     {
       id: "project1",
-      title: "Project One",
+      title: "Perfume Store",
       slug: "project-one",
-      image: "/placeholder.svg?height=600&width=800",
+      image: "/project_one.jpg?height=600&width=800",
       size: "large",
     },
     {
       id: "project2",
-      title: "Project Two",
+      title: "Anime Slider",
       slug: "project-two",
-      image: "/placeholder.svg?height=400&width=600",
+      image: "/sasu.jfif?height=400&width=600",
       size: "small",
     },
     {
       id: "project3",
-      title: "Project Three",
+      title: "Ai-ChatBot",
       slug: "project-three",
-      image: "/placeholder.svg?height=400&width=600",
+      image: "/chat2.jpeg?height=400&width=600",
       size: "small",
     },
     {
       id: "project4",
-      title: "Project Four",
+      title: "Vr Travelling Website",
       slug: "project-four",
-      image: "/placeholder.svg?height=600&width=800",
+      image: "/vr_image.jpg",
       size: "large",
     },
     {
       id: "project5",
-      title: "Project Five",
+      title: "Weather App",
       slug: "project-five",
-      image: "/placeholder.svg?height=400&width=600",
+      image: "/Weather.jfif",
       size: "small",
     },
     {
       id: "project6",
-      title: "Project Six",
+      title: "portfolio",
       slug: "project-six",
-      image: "/placeholder.svg?height=400&width=600",
+      image: "/port.jpg",
       size: "small",
     },
   ]
+  
 
   const cardVariants = {
     hidden: { opacity: 0, y: 50 },

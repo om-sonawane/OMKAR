@@ -1,8 +1,8 @@
-import Link from "next/link"
-import { Github, Twitter, Linkedin, Instagram } from "lucide-react"
+import Link from "next/link";
+import { SiGithub,SiLinkedin, SiInstagram } from "react-icons/si"; // Import Simple Icons
 
 export default function Footer() {
-  const currentYear = new Date().getFullYear()
+  const currentYear = new Date().getFullYear();
 
   return (
     <footer className="py-12 border-t">
@@ -10,7 +10,7 @@ export default function Footer() {
         <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
           <div className="flex flex-col items-center gap-2 md:items-start">
             <Link href="/" className="text-xl font-bold">
-              Portfolio
+              OMKAR
             </Link>
             <p className="text-sm text-muted-foreground">Creating elegant digital experiences</p>
           </div>
@@ -23,17 +23,9 @@ export default function Footer() {
               className="text-muted-foreground hover:text-foreground transition-colors"
               aria-label="GitHub"
             >
-              <Github className="h-5 w-5" />
+              <SiGithub className="h-5 w-5" />
             </Link>
-            <Link
-              href="#"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-foreground transition-colors"
-              aria-label="Twitter"
-            >
-              <Twitter className="h-5 w-5" />
-            </Link>
+            
             <Link
               href="#"
               target="_blank"
@@ -41,7 +33,7 @@ export default function Footer() {
               className="text-muted-foreground hover:text-foreground transition-colors"
               aria-label="LinkedIn"
             >
-              <Linkedin className="h-5 w-5" />
+              <SiLinkedin className="h-5 w-5" />
             </Link>
             <Link
               href="#"
@@ -50,16 +42,15 @@ export default function Footer() {
               className="text-muted-foreground hover:text-foreground transition-colors"
               aria-label="Instagram"
             >
-              <Instagram className="h-5 w-5" />
+              <SiInstagram className="h-5 w-5" />
             </Link>
           </div>
         </div>
 
         <div className="mt-8 border-t pt-8 text-center">
-          <p className="text-sm text-muted-foreground">© {currentYear} Your Name. All rights reserved.</p>
+          <p className="text-sm text-muted-foreground">© {currentYear} OMKAR. All rights reserved.</p>
         </div>
       </div>
     </footer>
-  )
+  );
 }
-
