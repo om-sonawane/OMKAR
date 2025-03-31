@@ -19,7 +19,7 @@ export default function Hero() {
     <section id="home" className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
-        <Image src="/bg.gif" alt="Background" fill priority className="object-cover" />
+        <Image src="/mount.jpg" alt="Background" fill priority className="object-cover" />
       </div>
 
       {/* Particle Background */}
@@ -39,7 +39,7 @@ export default function Hero() {
             <div className="max-w-3xl mx-auto space-y-8">
               <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter text-white dark:text-white drop-shadow-md">
                 <span className="text-primary-accent block mb-2">Hello, I'm</span>
-                <AnimatedText text="OM_SONAWANE" className="inline-block" />
+                <AnimatedText text="OM" className="inline-block" />
               </h1>
               <p className="text-xl md:text-2xl text-white/90 dark:text-white/90 max-w-[700px] mx-auto drop-shadow">
                 <AnimatedText text="I create elegant digital experiences with a focus on user-centered design and clean code." />

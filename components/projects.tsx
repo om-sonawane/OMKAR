@@ -7,7 +7,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { useInView } from "framer-motion"
 import { motion } from "framer-motion"
-import { Video } from "lucide-react"
+
 
 export default function Projects() {
   const ref = useRef(null)

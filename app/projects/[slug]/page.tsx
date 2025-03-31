@@ -6,66 +6,52 @@ import { ArrowLeft } from "lucide-react"
 const getProjectData = (slug: string) => {
   const projects = {
     "project-one": {
-      title: "Project One",
+      title: "Perfume Store",
       description:
-        "This is a detailed description of Project One. It would include information about the project goals, technologies used, challenges faced, and solutions implemented.",
-      image: "/placeholder.svg?height=800&width=1200",
-      technologies: ["React", "Next.js", "Tailwind CSS"],
-      liveUrl: "#",
-      githubUrl: "#",
+        "A luxury perfume store website featuring high-quality fragrance collections. Developed using Next.js, Tailwind CSS, and Leonardo AI for stunning image generation.",
+      image: "/omkarr.jpg?",
+      technologies: ["React", "Next.js", "Tailwind CSS", "Leonardo AI"],
+      liveUrl: "https://perfume-website-omkar.vercel.app/",
+      githubUrl: "https://github.com/om-sonawane/luxury-perfume-website",
+      
+      // Unique Sections for Each Project
+      details: "The project aims to provide a seamless experience for users looking for premium perfumes.It features a visually appealing UI with a responsive design.",
+      challenges: "The biggest challenge was handling image generation dynamically and optimizing performance. Implementing AI-generated product images required additional processing.",
+      solutions: "Used Leonardo AI to generate images, optimized loading with Next.js image components, and implemented lazy loading for better performance.",
     },
     "project-two": {
-      title: "Project Two",
+      title: "Task Manager",
       description:
-        "This is a detailed description of Project Two. It would include information about the project goals, technologies used, challenges faced, and solutions implemented.",
+        "A simple task management application with CRUD operations. Designed to improve productivity using React and Firebase for real-time data storage.",
       image: "/placeholder.svg?height=800&width=1200",
-      technologies: ["TypeScript", "React", "Node.js"],
+      technologies: ["TypeScript", "React", "Firebase"],
       liveUrl: "#",
       githubUrl: "#",
+
+      details: "This task manager allows users to create, edit, delete, and mark tasks as completed in real time using Firebase Firestore.",
+      challenges: "Managing real-time updates and ensuring smooth state management across different components.",
+      solutions: "Used Firebase's real-time database for instant updates and React Context API for state management.",
     },
     "project-three": {
-      title: "Project Three",
+      title: "Data Visualization Dashboard",
       description:
-        "This is a detailed description of Project Three. It would include information about the project goals, technologies used, challenges faced, and solutions implemented.",
+        "An interactive data visualization tool that uses D3.js for dynamic chart rendering. Built with Express.js for backend data handling.",
       image: "/placeholder.svg?height=800&width=1200",
       technologies: ["JavaScript", "D3.js", "Express"],
       liveUrl: "#",
       githubUrl: "#",
-    },
-    "project-four": {
-      title: "Project Four",
-      description:
-        "This is a detailed description of Project Four. It would include information about the project goals, technologies used, challenges faced, and solutions implemented.",
-      image: "/placeholder.svg?height=800&width=1200",
-      technologies: ["React", "Firebase", "Styled Components"],
-      liveUrl: "#",
-      githubUrl: "#",
-    },
-    "project-five": {
-      title: "Project Five",
-      description:
-        "This is a detailed description of Project Five. It would include information about the project goals, technologies used, challenges faced, and solutions implemented.",
-      image: "/placeholder.svg?height=800&width=1200",
-      technologies: ["Vue.js", "Vuex", "TailwindCSS"],
-      liveUrl: "#",
-      githubUrl: "#",
-    },
-    "project-six": {
-      title: "Project Six",
-      description:
-        "This is a detailed description of Project Six. It would include information about the project goals, technologies used, challenges faced, and solutions implemented.",
-      image: "/placeholder.svg?height=800&width=1200",
-      technologies: ["Angular", "RxJS", "SCSS"],
-      liveUrl: "#",
-      githubUrl: "#",
-    },
-  }
 
-  return projects[slug as keyof typeof projects] || null
-}
+      details: "A dashboard that visualizes large datasets using interactive charts, providing insights into key metrics.",
+      challenges: "Rendering large datasets efficiently while keeping UI interactions smooth.",
+      solutions: "Used D3.js for optimized rendering and React hooks to manage component updates efficiently.",
+    },
+  };
 
-export default function ProjectPage({ params }: { params: { slug: string } }) {
-  const project = getProjectData(params.slug)
+  return projects[slug as keyof typeof projects] || null;
+};
+
+export default async function ProjectPage({ params }: { params: { slug: string } }) {
+  const project = getProjectData((await params).slug)
 
   if (!project) {
     return (
@@ -82,7 +68,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
 
   return (
     <div className="container mx-auto px-4 py-20">
-      <Link href="/#projects" className="inline-flex items-center text-primary hover:underline mb-8 block">
+      <Link href="/#projects" className="inline-flex items-center text-primary hover:underline mb-8">
         <ArrowLeft className="mr-2 h-4 w-4" />
         Back to Projects
       </Link>
@@ -94,60 +80,54 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
       </div>
 
       <div className="grid md:grid-cols-3 gap-8">
-        <div className="md:col-span-2">
-          <h2 className="text-2xl font-semibold mb-4">Project Overview</h2>
-          <p className="text-muted-foreground mb-6">{project.description}</p>
+  {/* Left side: Project Overview, Details, Challenges & Solutions */}
+  <div className="md:col-span-2">
+    <h2 className="text-2xl font-semibold mb-4">Project Overview</h2>
+    <p className="text-muted-foreground mb-6">{project.description}</p>
 
-          <h2 className="text-2xl font-semibold mb-4">Project Details</h2>
-          <p className="text-muted-foreground mb-6">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed
-            erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim.
-            Phasellus molestie magna non est bibendum non venenatis nisl tempor.
-          </p>
+    <h2 className="text-2xl font-semibold mb-4">Project Details</h2>
+    <p className="text-muted-foreground mb-6">{project.details}</p>
 
-          <h2 className="text-2xl font-semibold mb-4">Challenges & Solutions</h2>
-          <p className="text-muted-foreground">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed
-            erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim.
-            Phasellus molestie magna non est bibendum non venenatis nisl tempor.
-          </p>
-        </div>
+    <h2 className="text-2xl font-semibold mb-4">Challenges & Solutions</h2>
+    <p className="text-muted-foreground mb-6"><strong>Challenges:</strong> {project.challenges}</p>
+    <p className="text-muted-foreground"><strong>Solutions:</strong> {project.solutions}</p>
+  </div>
 
-        <div>
-          <div className="bg-muted p-6 rounded-lg">
-            <h3 className="text-xl font-semibold mb-4">Technologies</h3>
-            <ul className="space-y-2 mb-6">
-              {project.technologies.map((tech) => (
-                <li key={tech} className="flex items-center">
-                  <span className="h-2 w-2 bg-primary rounded-full mr-2"></span>
-                  {tech}
-                </li>
-              ))}
-            </ul>
+  {/* Right side: Technologies & Project Links */}
+  <div className="bg-muted p-6 rounded-lg self-start">
+    <h3 className="text-xl font-semibold mb-4">Technologies</h3>
+    <ul className="space-y-2 mb-6">
+      {project.technologies.map((tech) => (
+        <li key={tech} className="flex items-center">
+          <span className="h-2 w-2 bg-primary rounded-full mr-2"></span>
+          {tech}
+        </li>
+      ))}
+    </ul>
 
-            <h3 className="text-xl font-semibold mb-4">Project Links</h3>
-            <div className="space-y-3">
-              <a
-                href={project.liveUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block w-full text-center py-2 px-4 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors"
-              >
-                Live Demo
-              </a>
-              <a
-                href={project.githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block w-full text-center py-2 px-4 bg-muted border border-input rounded-md hover:bg-accent transition-colors"
-              >
-                View Code
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
+    <h3 className="text-xl font-semibold mb-4">Project Links</h3>
+    <div className="space-y-3">
+      <a
+        href={project.liveUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="block w-full text-center py-2 px-4 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors"
+      >
+        Live Demo
+      </a>
+      <a
+        href={project.githubUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="block w-full text-center py-2 px-4 bg-muted border border-input rounded-md hover:bg-accent transition-colors"
+      >
+        View Code
+      </a>
+    </div>
+  </div>
+</div>
     </div>
   )
+
 }
 
