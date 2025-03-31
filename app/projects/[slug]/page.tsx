@@ -20,30 +20,69 @@ const getProjectData = (slug: string) => {
       solutions: "Used Leonardo AI to generate images, optimized loading with Next.js image components, and implemented lazy loading for better performance.",
     },
     "project-two": {
-      title: "Task Manager",
+      title: "Anime Slider",
       description:
-        "A simple task management application with CRUD operations. Designed to improve productivity using React and Firebase for real-time data storage.",
-      image: "/placeholder.svg?height=800&width=1200",
-      technologies: ["TypeScript", "React", "Firebase"],
-      liveUrl: "#",
-      githubUrl: "#",
+        "An interactive anime slider application that allows users to browse and filter their favorite anime stickers. Built with TypeScript, React. ",
+      image: "/naru.jfif",
+      technologies: ["Javascript", "React", "css"],
+      liveUrl: "https://anime-slider-omii.vercel.app/",
+      githubUrl: "https://github.com/om-sonawane/anime-slider",
 
-      details: "This task manager allows users to create, edit, delete, and mark tasks as completed in real time using Firebase Firestore.",
-      challenges: "Managing real-time updates and ensuring smooth state management across different components.",
-      solutions: "Used Firebase's real-time database for instant updates and React Context API for state management.",
+      details: "A web application that provides a user-friendly interface for browsing and filtering anime stickers. Users can easily find their favorite stickers and save them.",
+      challenges: "Ensuring an intuitive and visually appealing UI that is easy to navigate..",
+      solutions: "Use frameworks like Tailwind CSS or Material UI for a clean and user-friendly interface,Add animations and hover effects for a more interactive experience.",
     },
     "project-three": {
-      title: "Data Visualization Dashboard",
+      title: "ai chat bot",
       description:
-        "An interactive data visualization tool that uses D3.js for dynamic chart rendering. Built with Express.js for backend data handling.",
-      image: "/placeholder.svg?height=800&width=1200",
-      technologies: ["JavaScript", "D3.js", "Express"],
-      liveUrl: "#",
-      githubUrl: "#",
+        "An AI chatbot application that provides users with instant responses to their queries. Built with Python.",
+      image: "/aic.jpg",
+      technologies: ["Python", "Tkinter", "Sql"],
+      liveUrl: "https://github.com/om-sonawane/Ai-chatbot",
+      githubUrl: "https://github.com/om-sonawane/Ai-chatbot",
 
       details: "A dashboard that visualizes large datasets using interactive charts, providing insights into key metrics.",
-      challenges: "Rendering large datasets efficiently while keeping UI interactions smooth.",
-      solutions: "Used D3.js for optimized rendering and React hooks to manage component updates efficiently.",
+      challenges: "Limited Built-in UI Frameworks Unlike web development, Python’s UI frameworks (Tkinter, PyQt, Kivy) require additional learning and often lack modern design elements.",
+      solutions: "Choosing the Right UI Framework Use Tkinter is good for lightweight applications with basic UI needs",
+    },
+    "project-four": {
+      title: "Vr travelling Website",
+      description:
+        "A VR travel website that offers immersive virtual tours of popular destinations. Built with javascript, html, and css.",
+      image: "/vrt.jpeg",
+      technologies: ["Javascript", "Html", "css"],
+      liveUrl: "https://vr-travelling-website.vercel.app/",
+      githubUrl: "https://github.com/om-sonawane/vr-travelling-website",
+
+      details: "VR Traveling Website aims to provide an immersive travel experience through virtual reality. Users can explore various locations as if they were physically there, using 360-degree images or videos.",
+      challenges: "Ensuring users feel engaged rather than just watching static 360° images.",
+      solutions: "Add interactive elements like user-controlled camera movement.",
+    },
+    "project-five": {
+      title: "Weather App",
+      description:
+        "A simple Weather App that allows users to fetch and display the current temperature for a specified location. .",
+      image: "/weath.jpeg",
+      technologies: ["html", "css", "Javascript"],
+      liveUrl: "https://weather-app-omi.netlify.app/",
+      githubUrl: "https://github.com/om-sonawane/Weather-App",
+
+      details: "A weather app that fetches real-time weather data, displays temperature, humidity, wind speed, and weather conditions based on user location or manual search.",
+      challenges: "API rate limits, occasional downtime, or slow response times from weather APIs",
+      solutions: "Implement caching for repeated requests, use multiple API providers as a fallback, and handle errors gracefully with loading indicators and retry mechanisms.",
+    },
+    "project-six": {
+      title: "Portfolio Website",
+      description:
+        ".",
+      image: "/porto.png",
+      technologies: ["React", "Typescript", "Nextjs","Tailwind css"],
+      liveUrl: "https://omsonawane.vercel.app/",
+      githubUrl: "https://github.com/om-sonawane/OMKAR",
+
+      details: "A React-based portfolio website that showcases personal projects, skills, and contact information.",
+      challenges: "Achieving a modern, premium-looking design with smooth animations.",
+      solutions: "Use Tailwind CSS and Framer Motion for animations. Maintain a clean, minimalistic design with proper spacing, fonts, and color palettes.",
     },
   };
 
