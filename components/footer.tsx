@@ -17,7 +17,7 @@ export default function Footer() {
 
           <div className="flex items-center gap-4">
             <Link
-              href="#"
+              href="https://github.com/om-sonawane"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-foreground transition-colors"
@@ -27,7 +27,7 @@ export default function Footer() {
             </Link>
             
             <Link
-              href="#"
+              href="https://www.linkedin.com/in/om-sonawane-23bab11b8/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-foreground transition-colors"
