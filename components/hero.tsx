@@ -5,77 +5,97 @@ import { Button } from "@/components/ui/button"
 import { ArrowDown } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
-import ParticleBackground from "./ParticleBackground"
-import AnimatedText from "./AnimatedText"
+import { useTheme } from "next-themes"
+import { motion } from "framer-motion"
+import CloudDoodles from "./CloudDoodles"
 
 export default function Hero() {
   const [isVisible, setIsVisible] = useState(false)
+  const { theme } = useTheme()
 
   useEffect(() => {
     setIsVisible(true)
   }, [])
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
-      {/* Background Image */}
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Background Image - Theme based - Full coverage */}
       <div className="absolute inset-0 z-0">
-        <Image src="/mount.jpg" alt="Background" fill priority className="object-cover" />
+        <Image
+          src="/clouds.jpeg"
+          alt="Day clouds background"
+          fill
+          priority
+          className="object-cover transition-opacity duration-500 ease-in-out"
+          style={{ opacity: theme === "dark" ? 0 : 1 }}
+        />
+        <Image
+          src="/dclou.jpeg"
+          alt="Night clouds background"
+          fill
+          priority
+          className="object-cover transition-opacity duration-500 ease-in-out"
+          style={{ opacity: theme === "dark" ? 1 : 0 }}
+        />
       </div>
 
-      {/* Particle Background */}
-      <ParticleBackground />
+      {/* Cloud Doodles - Only in light mode */}
+      {/* <CloudDoodles /> */}
 
-      {/* Glass Effect Container - Starting below header */}
-      <div className="absolute top-24 left-8 right-8 bottom-8 z-10 rounded-3xl overflow-hidden">
-        <div className="absolute inset-0 backdrop-blur-md bg-white/15 dark:bg-black/20 shadow-2xl border border-white/30 dark:border-white/10"></div>
+      {/* Cloud decorations
+      <div className="cloud cloud-1"></div>
+      <div className="cloud cloud-2"></div>
+      <div className="cloud cloud-3"></div> */}
 
-        {/* Content inside glass container */}
-        <div
-          className={`relative h-full flex items-center justify-center transition-all duration-1000 ${
-            isVisible ? "opacity-100" : "opacity-0"
-          }`}
+      {/* Stars (visible in dark mode) */}
+      <div className="star star-1"></div>
+      <div className="star star-2"></div>
+      <div className="star star-3"></div>
+
+      {/* Content */}
+      <div className="relative z-10 container px-4 md:px-6 text-center mt-24">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="max-w-3xl mx-auto space-y-8"
         >
-          <div className="container px-4 md:px-6 text-center">
-            <div className="max-w-3xl mx-auto space-y-8">
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter text-white dark:text-white drop-shadow-md">
-                <span className="text-primary-accent block mb-2">Hello, I'm</span>
-                <AnimatedText text="OM_Sonawane" className="inline-block" />
-              </h1>
-              <p className="text-xl md:text-2xl text-white/90 dark:text-white/90 max-w-[700px] mx-auto drop-shadow">
-                <AnimatedText text="I create elegant digital experiences with a focus on user-centered design and clean code." />
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 pt-6 justify-center">
-                <Button
-                  size="lg"
-                  className="bg-primary-accent hover:bg-primary-accent/90 text-white shadow-lg shadow-primary-accent/20 group"
-                  asChild
-                >
-                  <Link href="#projects">
-                    <span className="group-hover:translate-x-1 transition-transform duration-300">View My Work</span>
-                  </Link>
-                </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-white/50 text-white hover:bg-white/20 backdrop-blur-sm group"
-                  asChild
-                >
-                  <Link href="#contact">
-                    <span className="group-hover:translate-x-1 transition-transform duration-300">Get In Touch</span>
-                  </Link>
-                </Button>
-              </div>
-            </div>
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter">
+            <span className="block text-primary-accent mb-2">Hello, I'm</span>
+            <span className="text-foreground">OM SONAWANE</span>
+          </h1>
+          <p className="text-xl md:text-2xl text-foreground/80 max-w-[700px] mx-auto">
+            I create elegant digital experiences with a focus on user-centered design and clean code.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 pt-6 justify-center">
+            <Button
+              size="lg"
+              className="bg-primary hover:bg-primary-accent text-white shadow-lg shadow-primary/20 group"
+              asChild
+            >
+              <Link href="#projects">
+                <span className="group-hover:translate-x-1 transition-transform duration-300">View My Work</span>
+              </Link>
+            </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              className="border-primary/30 text-foreground hover:bg-primary/10 group"
+              asChild
+            >
+              <Link href="#contact">
+                <span className="group-hover:translate-x-1 transition-transform duration-300">Get In Touch</span>
+              </Link>
+            </Button>
           </div>
-        </div>
+        </motion.div>
       </div>
 
       <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce z-20">
         <Link href="#about" aria-label="Scroll to About section">
-          <ArrowDown className="h-6 w-6 text-white drop-shadow-lg" />
+          <ArrowDown className="h-6 w-6 text-foreground" />
         </Link>
       </div>
     </section>
   )
 }
-

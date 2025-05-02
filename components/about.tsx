@@ -31,23 +31,59 @@ export default function About() {
   ]
 
   return (
-    <section id="about" ref={ref} className="py-20 md:py-32 bg-muted/50">
-      <div className="container px-4 md:px-6">
-        <div
-          className={`grid md:grid-cols-2 gap-12 items-center transition-all duration-1000 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-          }`}
-        >
-          <div className="relative aspect-square max-w-md mx-auto md:mx-0">
-            <div className="absolute inset-0 border-2 border-primary rounded-lg transform translate-x-4 translate-y-4" />
-            <div className="relative h-full w-full overflow-hidden rounded-lg bg-muted">
-              <Image src="/profile.jpeg" alt="Profile" fill className="object-cover" priority />
+    <section
+      id="about"
+      ref={ref}
+      className="py-20 md:py-32 bg-gradient-to-b from-background to-primary/5 dark:from-background dark:to-primary/10 relative overflow-hidden"
+    >
+      {/* Background clouds */}
+      <div className="absolute top-1/4 left-1/4 opacity-30 dark:opacity-10">
+        <AnimatedClouds />
+      </div>
+      <div className="absolute bottom-1/4 right-1/4 opacity-30 dark:opacity-10">
+        <AnimatedClouds />
+      </div>
+
+      <div className="container px-4 md:px-4 relative z-10">
+        <div className="grid md:grid-cols-2 gap-12 items-center">
+          {/* Portrait Image with Animation and Standard Frame */}
+          <motion.div
+            className="relative mx-auto md:mx-0"
+            initial={{ x: -100, opacity: 0 }}
+            animate={isVisible ? { x: 0, opacity: 1 } : { x: -100, opacity: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            <div className="portrait-container">
+              {/* Cloud decorations around the portrait */}
+              <AnimatedClouds className="top-[-30px] left-[-40px] scale-75" />
+              <AnimatedClouds className="bottom-[-20px] right-[-30px] scale-50" />
+
+              {/* Standard portrait frame */}
+              <div className="portrait-frame standard-frame">
+                <div className="portrait-image">
+                  <Image
+                    src="profile.jpeg"
+                    alt="Profile"
+                    width={500}
+                    height={500}
+                    className="object-cover"
+                    priority
+                  />
+                </div>
+              </div>
             </div>
-          </div>
-          <div className="space-y-6">
+          </motion.div>
+
+          {/* Content with Animation */}
+          <motion.div
+            className="space-y-6 relative z-10"
+            initial={{ opacity: 0, y: 20 }}
+            animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold tracking-tighter mb-4">About Me</h2>
-              <div className="h-1 w-20 bg-primary mb-6" />
+              <h2 className="text-3xl md:text-4xl font-bold tracking-tighter mb-4 text-foreground">About Me</h2>
+              <div className="h-1 w-20 bg-primary-accent mb-6" />
             </div>
             <p className="text-lg text-muted-foreground">
               I'm a passionate developer and designer with a keen eye for detail and a love for creating beautiful,
@@ -59,19 +95,21 @@ export default function About() {
               enjoying the outdoors.
             </p>
             <div className="pt-4">
-              <h3 className="text-xl font-semibold mb-4">My Skills</h3>
+              <h3 className="text-xl font-semibold mb-4 text-foreground">My Skills</h3>
               <div className="flex flex-wrap gap-2">
                 {skills.map((skill) => (
-                  <Badge key={skill} variant="secondary" className="px-3 py-1">
+                  <Badge
+                    key={skill}
+                    className="px-3 py-1 bg-primary/10 hover:bg-primary/20 text-primary border border-primary/20"
+                  >
                     {skill}
                   </Badge>
                 ))}
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
   )
 }
-
