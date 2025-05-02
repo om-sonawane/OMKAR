@@ -4,21 +4,21 @@
 
 @layer base {
   :root {
-    /* Light theme - Vibrant Creative Palette */
-    --background: 190 70% 95%;
-    --foreground: 230 60% 10%;
+    /* Light theme - Day Clouds */
+    --background: 210 80% 95%;
+    --foreground: 220 40% 20%;
     --card: 0 0% 100%;
-    --card-foreground: 230 60% 10%;
+    --card-foreground: 220 40% 20%;
     --popover: 0 0% 100%;
-    --popover-foreground: 230 60% 10%;
-    --primary: 210 100% 50%;
+    --popover-foreground: 220 40% 20%;
+    --primary: 210 80% 60%;
     --primary-foreground: 0 0% 100%;
-    --primary-accent: 190 100% 50%;
-    --secondary: 250 100% 65%;
+    --primary-accent: 200 90% 70%;
+    --secondary: 220 40% 70%;
     --secondary-foreground: 0 0% 100%;
-    --muted: 210 40% 96%;
-    --muted-foreground: 215 16% 47%;
-    --accent: 280 80% 60%;
+    --muted: 210 40% 90%;
+    --muted-foreground: 220 20% 40%;
+    --accent: 190 80% 70%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 210 40% 98%;
@@ -29,27 +29,27 @@
   }
 
   .dark {
-    /* Dark theme - Cosmic Deep Palette */
-    --background: 230 50% 10%;
+    /* Dark theme - Night Clouds */
+    --background: 220 50% 15%;
     --foreground: 210 40% 98%;
-    --card: 235 50% 15%;
+    --card: 220 50% 20%;
     --card-foreground: 210 40% 98%;
-    --popover: 235 50% 15%;
+    --popover: 220 50% 20%;
     --popover-foreground: 210 40% 98%;
-    --primary: 220 100% 65%;
+    --primary: 220 70% 50%;
     --primary-foreground: 0 0% 100%;
-    --primary-accent: 180 100% 60%;
-    --secondary: 280 100% 65%;
+    --primary-accent: 200 80% 60%;
+    --secondary: 220 60% 40%;
     --secondary-foreground: 0 0% 100%;
-    --muted: 235 30% 20%;
-    --muted-foreground: 215 20% 75%;
-    --accent: 300 100% 60%;
+    --muted: 220 40% 25%;
+    --muted-foreground: 210 20% 80%;
+    --accent: 190 70% 50%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 70% 50%;
     --destructive-foreground: 210 40% 98%;
-    --border: 235 30% 20%;
-    --input: 235 30% 20%;
-    --ring: 220 100% 65%;
+    --border: 220 40% 30%;
+    --input: 220 40% 30%;
+    --ring: 220 70% 50%;
   }
 }
 
@@ -112,7 +112,6 @@
   position: relative;
   padding-top: 120%;
   overflow: hidden;
-  clip-path: polygon(0% 20%, 20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
   border: 4px solid rgba(var(--primary-accent), 0.3);
 }
@@ -143,65 +142,136 @@
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* 3D Card Effect */
-.card-3d {
-  transform-style: preserve-3d;
-  perspective: 1000px;
+/* Cloud navbar */
+.cloud-navbar {
+  border-radius: 30px;
+  backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.1);
+  transition: all 0.3s ease;
+  width: 100%;
+  max-width: 800px;
 }
 
-.card-3d-content {
-  transition: transform 0.5s ease;
-  transform: translateZ(0) rotateX(0) rotateY(0);
-  transform-style: preserve-3d;
+.dark .cloud-navbar {
+  background: rgba(30, 41, 59, 0.7);
+  border: 1px solid rgba(30, 41, 59, 0.8);
 }
 
-.card-3d:hover .card-3d-content {
-  transform: translateZ(20px);
+/* Cloud decorations */
+.cloud {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  filter: blur(10px);
 }
 
-/* Animated gradient background */
-.animated-gradient {
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-  background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
+.cloud-1 {
+  width: 100px;
+  height: 60px;
+  top: 20%;
+  left: 10%;
+  animation: float 8s ease-in-out infinite;
 }
 
-@keyframes gradient {
-  0% {
-    background-position: 0% 50%;
+.cloud-2 {
+  width: 150px;
+  height: 80px;
+  top: 40%;
+  right: 15%;
+  animation: float 10s ease-in-out infinite 1s;
+}
+
+.cloud-3 {
+  width: 80px;
+  height: 50px;
+  bottom: 30%;
+  left: 20%;
+  animation: float 7s ease-in-out infinite 0.5s;
+}
+
+.dark .cloud {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Star decorations for dark mode */
+.star {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  filter: blur(1px);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.dark .star {
+  opacity: 0.8;
+}
+
+.star-1 {
+  width: 2px;
+  height: 2px;
+  top: 15%;
+  left: 25%;
+  animation: twinkle 4s ease-in-out infinite;
+}
+
+.star-2 {
+  width: 3px;
+  height: 3px;
+  top: 30%;
+  right: 20%;
+  animation: twinkle 3s ease-in-out infinite 0.5s;
+}
+
+.star-3 {
+  width: 2px;
+  height: 2px;
+  bottom: 40%;
+  left: 15%;
+  animation: twinkle 5s ease-in-out infinite 1s;
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.3;
   }
   50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
+    opacity: 1;
   }
 }
 
-/* Shiny button effect */
-.btn-shine {
+/* Floating island effect */
+.floating-island {
   position: relative;
+  border-radius: 30px;
   overflow: hidden;
+  transition: all 0.3s ease;
 }
 
-.btn-shine::after {
+.floating-island::before,
+.floating-island::after {
   content: "";
   position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(
-    to right,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.3) 50%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  transform: rotate(30deg);
-  transition: transform 0.5s;
+  width: 20px;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  bottom: -5px;
+  filter: blur(5px);
 }
 
-.btn-shine:hover::after {
-  transform: rotate(30deg) translate(100%, -100%);
+.floating-island::before {
+  left: 20%;
 }
 
+.floating-island::after {
+  right: 20%;
+}
+
+.dark .floating-island::before,
+.dark .floating-island::after {
+  background: rgba(255, 255, 255, 0.2);
+}

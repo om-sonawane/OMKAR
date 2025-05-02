@@ -1,97 +1,55 @@
-"use client";
+"use client"
 
-import { useState, useEffect } from "react";
-import Link from "next/link";
-import { Menu, X, Sun, Moon } from "lucide-react";
-import { useTheme } from "next-themes";
+import { useState, useEffect } from "react"
+import Link from "next/link"
+import { Sun, Moon } from "lucide-react"
+import { useTheme } from "next-themes"
 
 export default function Header() {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  // Ensure the component is mounted before rendering theme elements
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const [mounted, setMounted] = useState(false)
+  const { theme, setTheme } = useTheme()
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    setMounted(true)
+  }, [])
 
   const navLinks = [
     { name: "Home", href: "#home" },
     { name: "About", href: "#about" },
     { name: "Projects", href: "#projects" },
     { name: "Contact", href: "#contact" },
-  ];
+  ]
 
   return (
-    <header
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        isScrolled ? "bg-background/80 backdrop-blur-md py-4 shadow-sm" : "bg-transparent py-6"
-      }`}
-    >
-      <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
-        <Link href="/" className="text-3xl font-bold tracking-tight hover:text-accent transition-colors">
-          OMKAR
-        </Link>
+    <header className="fixed top-0 left-0 right-0 z-50 flex justify-center py-4">
+      <div className="cloud-navbar px-8 py-2 w-auto max-w-4xl mx-auto">
+        <div className="flex items-center justify-between">
+          <Link href="/" className="text-lg font-medium text-primary hover:text-primary-accent transition-colors">
+            OMKAR
+          </Link>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-8">
-          {navLinks.map((link) => (
-            <Link key={link.name} href={link.href} className="text-lg font-medium hover:text-accent transition-colors">
-              {link.name}
-            </Link>
-          ))}
-          {mounted && ( // Only render theme toggle button on the client
-            <button
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="p-2 rounded-full bg-primary text-primary-foreground hover:bg-accent transition-colors"
-              aria-label="Toggle theme"
-            >
-              {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
-            </button>
-          )}
-        </nav>
-
-        {/* Mobile Menu Button */}
-        <div className="md:hidden flex items-center">
-          {mounted && ( // Ensure theme toggle is mounted before rendering
-            <button
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="p-2 rounded-full bg-primary text-primary-foreground hover:bg-accent transition-colors mr-4"
-              aria-label="Toggle theme"
-            >
-              {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
-            </button>
-          )}
-          <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} aria-label="Toggle menu">
-            {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </button>
+          <nav className="flex items-center space-x-8">
+            {navLinks.map((link) => (
+              <Link
+                key={link.name}
+                href={link.href}
+                className="text-sm font-medium text-foreground/80 hover:text-primary-accent transition-colors"
+              >
+                {link.name}
+              </Link>
+            ))}
+            {mounted && (
+              <button
+                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                className="p-1.5 rounded-full bg-primary/10 hover:bg-primary/20 text-primary transition-colors"
+                aria-label="Toggle theme"
+              >
+                {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+              </button>
+            )}
+          </nav>
         </div>
       </div>
-
-      {/* Mobile Navigation */}
-      {mobileMenuOpen && (
-        <nav className="md:hidden absolute top-full left-0 w-full bg-background/95 backdrop-blur-md shadow-md py-4 px-4 flex flex-col space-y-4">
-          {navLinks.map((link) => (
-            <Link
-              key={link.name}
-              href={link.href}
-              className="text-lg font-medium hover:text-accent transition-colors py-2"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              {link.name}
-            </Link>
-          ))}
-        </nav>
-      )}
     </header>
-  );
+  )
 }
