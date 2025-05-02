@@ -3,7 +3,8 @@
 import { useRef, useEffect, useState } from "react"
 import Image from "next/image"
 import { Badge } from "@/components/ui/badge"
-import { useInView } from "framer-motion"
+import { motion, useInView } from "framer-motion"
+import AnimatedClouds from "./AnimatedClouds"
 
 export default function About() {
   const ref = useRef(null)
