@@ -59,17 +59,17 @@ const getProjectData = (slug: string) => {
       solutions: "Add interactive elements like user-controlled camera movement.",
     },
     "project-five": {
-      title: "Weather App",
+      title: "Software Defect Detection",
       description:
-        "A simple Weather App that allows users to fetch and display the current temperature for a specified location. .",
-      image: "/weath.jpeg",
-      technologies: ["html", "css", "Javascript"],
-      liveUrl: "https://weather-app-omi.netlify.app/",
+        "The Software Defect Detection project is a tool designed to identify and analyze software bugs efficiently, ensuring improved code quality and reliability. It leverages advanced techniques to streamline the debugging process.",
+      image: "/astro.jpg",
+      technologies: ["NextJs", "Tailwind", "Typescript"],
+      liveUrl: "https://sdd-omi.vercel.app/",
       githubUrl: "https://github.com/om-sonawane/Weather-App",
 
-      details: "A weather app that fetches real-time weather data, displays temperature, humidity, wind speed, and weather conditions based on user location or manual search.",
-      challenges: "API rate limits, occasional downtime, or slow response times from weather APIs",
-      solutions: "Implement caching for repeated requests, use multiple API providers as a fallback, and handle errors gracefully with loading indicators and retry mechanisms.",
+      details: "A machine learning-based system designed to predict software defects by analyzing code metrics such as lines of code, cyclomatic complexity, coupling, cohesion, and historical bug data.",
+      challenges: "Imbalanced Data: Most datasets contain far more non-defective modules than defective ones, leading to biased model predictions.",
+      solutions: "CSV File Handling:Use pandas to read and validate the uploaded CSV file.",
     },
     "project-six": {
       title: "Portfolio Website",
