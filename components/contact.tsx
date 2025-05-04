@@ -51,57 +51,59 @@ export default function Contact() {
     <section
       id="contact"
       ref={ref}
-      className="py-20 md:py-32 bg-gradient-to-b from-secondary/5 to-background dark:from-secondary/10 dark:to-background"
+      className="py-16 sm:py-20 md:py-32 bg-gradient-to-b from-secondary/5 to-background dark:from-secondary/10 dark:to-background"
     >
       <div className="container px-4 md:px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tighter mb-4 text-foreground">Get In Touch</h2>
-          <div className="h-1 w-20 bg-primary-accent mx-auto mb-6" />
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+        <div className="text-center mb-10 sm:mb-16">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tighter mb-3 sm:mb-4 text-foreground">
+            Get In Touch
+          </h2>
+          <div className="h-1 w-20 bg-primary-accent mx-auto mb-4 sm:mb-6" />
+          <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
             Have a project in mind or want to collaborate? Feel free to reach out and I'll get back to you as soon as
             possible.
           </p>
         </div>
 
         <motion.div
-          className="grid md:grid-cols-2 gap-12 items-start"
+          className="grid md:grid-cols-2 gap-8 sm:gap-12 items-start"
           variants={containerVariants}
           initial="hidden"
           animate={isVisible ? "visible" : "hidden"}
         >
-          <motion.div className="space-y-8" variants={containerVariants}>
+          <motion.div className="space-y-6 sm:space-y-8" variants={containerVariants}>
             <motion.div className="flex items-start space-x-4" variants={itemVariants}>
               <div className="bg-primary/10 p-3 rounded-full">
-                <Mail className="h-6 w-6 text-primary" />
+                <Mail className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
               </div>
               <div>
-                <h3 className="text-lg font-semibold mb-1 text-foreground">Email</h3>
-                <p className="text-muted-foreground">hello@example.com</p>
+                <h3 className="text-base sm:text-lg font-semibold mb-1 text-foreground">Email</h3>
+                <p className="text-sm sm:text-base text-muted-foreground">omsonawane03@gmail.com</p>
               </div>
             </motion.div>
             <motion.div className="flex items-start space-x-4" variants={itemVariants}>
               <div className="bg-secondary/10 p-3 rounded-full">
-                <Phone className="h-6 w-6 text-secondary" />
+                <Phone className="h-5 w-5 sm:h-6 sm:w-6 text-secondary" />
               </div>
               <div>
-                <h3 className="text-lg font-semibold mb-1 text-foreground">Phone</h3>
-                <p className="text-muted-foreground">+1 (555) 123-4567</p>
+                <h3 className="text-base sm:text-lg font-semibold mb-1 text-foreground">Phone</h3>
+                <p className="text-sm sm:text-base text-muted-foreground">+91 7709096561</p>
               </div>
             </motion.div>
             <motion.div className="flex items-start space-x-4" variants={itemVariants}>
               <div className="bg-accent/10 p-3 rounded-full">
-                <MapPin className="h-6 w-6 text-accent" />
+                <MapPin className="h-5 w-5 sm:h-6 sm:w-6 text-accent" />
               </div>
               <div>
-                <h3 className="text-lg font-semibold mb-1 text-foreground">Location</h3>
-                <p className="text-muted-foreground">San Francisco, CA</p>
+                <h3 className="text-base sm:text-lg font-semibold mb-1 text-foreground">Location</h3>
+                <p className="text-sm sm:text-base text-muted-foreground">Pune</p>
               </div>
             </motion.div>
           </motion.div>
 
           <motion.form
             onSubmit={handleSubmit}
-            className="space-y-6 p-6 rounded-xl bg-white/50 dark:bg-white/5 backdrop-blur-sm border border-white/20 dark:border-white/10 shadow-lg"
+            className="space-y-4 sm:space-y-6 p-4 sm:p-6 rounded-xl bg-white/50 dark:bg-white/5 backdrop-blur-sm border border-white/20 dark:border-white/10 shadow-lg"
             variants={containerVariants}
           >
             <div className="grid sm:grid-cols-2 gap-4">
@@ -136,7 +138,7 @@ export default function Contact() {
                 id="message"
                 placeholder="Your Message"
                 required
-                className="min-h-[150px] bg-white/70 dark:bg-black/30 border-white/30 dark:border-white/10 focus:border-primary"
+                className="min-h-[120px] sm:min-h-[150px] bg-white/70 dark:bg-black/30 border-white/30 dark:border-white/10 focus:border-primary"
               />
             </motion.div>
             <motion.div variants={itemVariants}>

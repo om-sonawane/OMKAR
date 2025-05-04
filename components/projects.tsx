@@ -51,9 +51,9 @@ export default function Projects() {
     },
     {
       id: "project5",
-      title: "Weather App",
+      title: "Software Defect Detection",
       slug: "project-five",
-      image: "/Weather.jfif",
+      image: "/defect.jpg",
       size: "small",
     },
     {
@@ -64,7 +64,6 @@ export default function Projects() {
       size: "small",
     },
   ]
-  
 
   const cardVariants = {
     hidden: { opacity: 0, y: 50 },
@@ -95,37 +94,59 @@ export default function Projects() {
     card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`
   }
 
-  const handleMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
+  const handleMouseLeave = (e: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>) => {
     e.currentTarget.style.transform = "perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)"
+  }
+
+  // Touch-based 3D effect for mobile
+  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+    const card = e.currentTarget
+    const rect = card.getBoundingClientRect()
+    const touch = e.touches[0]
+
+    const x = touch.clientX - rect.left
+    const y = touch.clientY - rect.top
+
+    const centerX = rect.width / 2
+    const centerY = rect.height / 2
+
+    const rotateX = (y - centerY) / 30
+    const rotateY = (centerX - x) / 30
+
+    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`
   }
 
   return (
     <section
       id="projects"
       ref={ref}
-      className="py-20 md:py-32 bg-gradient-to-tl from-accent/5 to-background dark:from-accent/10 dark:to-background"
+      className="py-16 sm:py-20 md:py-32 bg-gradient-to-b from-primary/5 to-secondary/5 dark:from-primary/10 dark:to-secondary/10"
     >
       <div className="container px-4 md:px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tighter mb-4 text-foreground">My Projects</h2>
-          <div className="h-1 w-20 bg-primary-accent mx-auto mb-6" />
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+        <div className="text-center mb-10 sm:mb-16">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tighter mb-3 sm:mb-4 text-foreground">
+            My Projects
+          </h2>
+          <div className="h-1 w-20 bg-primary-accent mx-auto mb-4 sm:mb-6" />
+          <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
             Here are some of my recent projects. Each one was carefully crafted with attention to detail, performance,
             and user experience.
           </p>
         </div>
 
         {/* First Row - Big left, two small right */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 mb-6">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-6 mb-4 sm:mb-6">
           {/* Large project on left */}
           <motion.div
-            className="md:col-span-7 relative group h-[400px] md:h-[500px] overflow-hidden rounded-2xl shadow-lg"
+            className="md:col-span-7 relative group h-[300px] sm:h-[400px] md:h-[500px] overflow-hidden rounded-2xl shadow-lg"
             custom={0}
             variants={cardVariants}
             initial="hidden"
             animate={isVisible ? "visible" : "hidden"}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
+            onTouchMove={handleTouchMove}
+            
             style={{ transition: "transform 0.2s ease-out" }}
           >
             <Link href={`/projects/${projects[0].slug}`} className="block h-full">
@@ -136,11 +157,11 @@ export default function Projects() {
                 fill
                 className="object-cover transition-transform duration-700 group-hover:scale-110"
               />
-              <div className="absolute inset-0 bg-primary-accent/0 group-hover:bg-primary-accent/20 transition-colors duration-300 z-10"></div>
-              <div className="absolute bottom-0 left-0 right-0 p-6 z-20 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                <h3 className="text-white text-2xl font-bold mb-2">{projects[0].title}</h3>
-                <div className="w-10 h-1 bg-primary-accent mb-3 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
-                <p className="text-white/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/20 transition-colors duration-300 z-10"></div>
+              <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 z-20 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                <h3 className="text-white text-xl sm:text-2xl font-bold mb-2">{projects[0].title}</h3>
+                <div className="w-10 h-1 bg-primary-accent mb-2 sm:mb-3 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                <p className="text-white/80 text-sm sm:text-base opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   Click to view project details
                 </p>
               </div>
@@ -148,17 +169,19 @@ export default function Projects() {
           </motion.div>
 
           {/* Two small projects on right */}
-          <div className="md:col-span-5 grid grid-cols-1 gap-6">
+          <div className="md:col-span-5 grid grid-cols-1 gap-4 sm:gap-6">
             {[projects[1], projects[2]].map((project, index) => (
               <motion.div
                 key={project.id}
-                className="relative group h-[240px] overflow-hidden rounded-2xl shadow-lg"
+                className="relative group h-[200px] sm:h-[240px] overflow-hidden rounded-2xl shadow-lg"
                 custom={index + 1}
                 variants={cardVariants}
                 initial="hidden"
                 animate={isVisible ? "visible" : "hidden"}
                 onMouseMove={handleMouseMove}
                 onMouseLeave={handleMouseLeave}
+                onTouchMove={handleTouchMove}
+                onTouchEnd={(e) => handleMouseLeave(e)}
                 style={{ transition: "transform 0.2s ease-out" }}
               >
                 <Link href={`/projects/${project.slug}`} className="block h-full">
@@ -170,10 +193,10 @@ export default function Projects() {
                     className="object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-secondary/0 group-hover:bg-secondary/20 transition-colors duration-300 z-10"></div>
-                  <div className="absolute bottom-0 left-0 right-0 p-6 z-20 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                    <h3 className="text-white text-xl font-bold mb-2">{project.title}</h3>
-                    <div className="w-8 h-1 bg-secondary mb-3 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
-                    <p className="text-white/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 z-20 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                    <h3 className="text-white text-lg sm:text-xl font-bold mb-1 sm:mb-2">{project.title}</h3>
+                    <div className="w-8 h-1 bg-secondary mb-2 sm:mb-3 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                    <p className="text-white/80 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       Click to view project details
                     </p>
                   </div>
@@ -184,19 +207,21 @@ export default function Projects() {
         </div>
 
         {/* Second Row - Two small left, big right */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-6">
           {/* Two small projects on left */}
-          <div className="md:col-span-5 grid grid-cols-1 gap-6 md:order-1 lg:order-1">
+          <div className="md:col-span-5 grid grid-cols-1 gap-4 sm:gap-6 md:order-1 lg:order-1">
             {[projects[4], projects[5]].map((project, index) => (
               <motion.div
                 key={project.id}
-                className="relative group h-[240px] overflow-hidden rounded-2xl shadow-lg"
+                className="relative group h-[200px] sm:h-[240px] overflow-hidden rounded-2xl shadow-lg"
                 custom={index + 3}
                 variants={cardVariants}
                 initial="hidden"
                 animate={isVisible ? "visible" : "hidden"}
                 onMouseMove={handleMouseMove}
                 onMouseLeave={handleMouseLeave}
+                onTouchMove={handleTouchMove}
+                onTouchEnd={handleMouseLeave}
                 style={{ transition: "transform 0.2s ease-out" }}
               >
                 <Link href={`/projects/${project.slug}`} className="block h-full">
@@ -208,10 +233,10 @@ export default function Projects() {
                     className="object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-accent/0 group-hover:bg-accent/20 transition-colors duration-300 z-10"></div>
-                  <div className="absolute bottom-0 left-0 right-0 p-6 z-20 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                    <h3 className="text-white text-xl font-bold mb-2">{project.title}</h3>
-                    <div className="w-8 h-1 bg-accent mb-3 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
-                    <p className="text-white/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 z-20 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                    <h3 className="text-white text-lg sm:text-xl font-bold mb-1 sm:mb-2">{project.title}</h3>
+                    <div className="w-8 h-1 bg-accent mb-2 sm:mb-3 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                    <p className="text-white/80 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       Click to view project details
                     </p>
                   </div>
@@ -222,13 +247,15 @@ export default function Projects() {
 
           {/* Large project on right */}
           <motion.div
-            className="md:col-span-7 relative group h-[400px] md:h-[500px] overflow-hidden rounded-2xl shadow-lg md:order-2 lg:order-2"
+            className="md:col-span-7 relative group h-[300px] sm:h-[400px] md:h-[500px] overflow-hidden rounded-2xl shadow-lg md:order-2 lg:order-2"
             custom={5}
             variants={cardVariants}
             initial="hidden"
             animate={isVisible ? "visible" : "hidden"}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleMouseLeave}
             style={{ transition: "transform 0.2s ease-out" }}
           >
             <Link href={`/projects/${projects[3].slug}`} className="block h-full">
@@ -240,10 +267,10 @@ export default function Projects() {
                 className="object-cover transition-transform duration-700 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-secondary/0 group-hover:bg-secondary/20 transition-colors duration-300 z-10"></div>
-              <div className="absolute bottom-0 left-0 right-0 p-6 z-20 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                <h3 className="text-white text-2xl font-bold mb-2">{projects[3].title}</h3>
-                <div className="w-10 h-1 bg-secondary mb-3 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
-                <p className="text-white/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 z-20 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                <h3 className="text-white text-xl sm:text-2xl font-bold mb-2">{projects[3].title}</h3>
+                <div className="w-10 h-1 bg-secondary mb-2 sm:mb-3 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                <p className="text-white/80 text-sm sm:text-base opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   Click to view project details
                 </p>
               </div>
@@ -254,4 +281,3 @@ export default function Projects() {
     </section>
   )
 }
-

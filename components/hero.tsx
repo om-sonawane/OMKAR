@@ -53,24 +53,24 @@ export default function Hero() {
       <div className="star star-3"></div>
 
       {/* Content */}
-      <div className="relative z-10 container px-4 md:px-6 text-center mt-24">
+      <div className="relative z-10 container px-4 md:px-6 text-center mt-16 sm:mt-24">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="max-w-3xl mx-auto space-y-8"
+          className="max-w-3xl mx-auto space-y-6 sm:space-y-8"
         >
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter">
             <span className="block text-primary-accent mb-2">Hello, I'm</span>
             <span className="text-foreground">OM SONAWANE</span>
           </h1>
-          <p className="text-xl md:text-2xl text-foreground/80 max-w-[700px] mx-auto">
+          <p className="text-lg sm:text-xl md:text-2xl text-foreground/80 max-w-[700px] mx-auto">
             I create elegant digital experiences with a focus on user-centered design and clean code.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 pt-6 justify-center">
+          <div className="flex flex-col sm:flex-row gap-4 pt-4 sm:pt-6 justify-center">
             <Button
               size="lg"
-              className="bg-primary hover:bg-primary-accent text-white shadow-lg shadow-primary/20 group"
+              className="bg-primary hover:bg-primary-accent text-white shadow-lg shadow-primary/20 group w-full sm:w-auto"
               asChild
             >
               <Link href="#projects">
@@ -80,7 +80,7 @@ export default function Hero() {
             <Button
               size="lg"
               variant="outline"
-              className="border-primary/30 text-foreground hover:bg-primary/10 group"
+              className="border-primary/30 text-foreground hover:bg-primary/10 group w-full sm:w-auto"
               asChild
             >
               <Link href="#contact">
