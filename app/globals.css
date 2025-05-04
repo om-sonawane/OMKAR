@@ -62,6 +62,7 @@
   }
   html {
     scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
   }
 }
 
@@ -113,11 +114,19 @@
   padding-top: 120%;
   overflow: hidden;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-  border: 4px solid rgba(var(--primary-accent), 0.3);
 }
 
-.dark .portrait-frame {
-  border-color: rgba(var(--primary-accent), 0.5);
+.standard-frame {
+  border-radius: 8px;
+  border: 4px solid;
+  border-image: linear-gradient(45deg, hsl(var(--primary)), hsl(var(--secondary)), hsl(var(--primary))) 1;
+  overflow: hidden;
+  clip-path: none;
+  transition: transform 0.5s ease-out;
+}
+
+.dark .standard-frame {
+  border-image: linear-gradient(45deg, hsl(var(--primary)), hsl(var(--accent)), hsl(var(--primary))) 1;
 }
 
 .portrait-image {
@@ -151,7 +160,20 @@
   box-shadow: 0 8px 32px rgba(31, 38, 135, 0.1);
   transition: all 0.3s ease;
   width: 100%;
-  max-width: 800px;
+}
+
+/* Responsive navbar width adjustments */
+@media (min-width: 768px) {
+  .cloud-navbar {
+    width: auto;
+    min-width: 600px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .cloud-navbar {
+    min-width: 700px;
+  }
 }
 
 .dark .cloud-navbar {
@@ -274,4 +296,57 @@
 .dark .floating-island::before,
 .dark .floating-island::after {
   background: rgba(255, 255, 255, 0.2);
+}
+
+/* Mobile-specific enhancements */
+@media (max-width: 640px) {
+  .cloud-navbar {
+    border-radius: 20px;
+  }
+
+  .portrait-frame {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Add a subtle pulse animation to buttons on mobile */
+  .btn-pulse {
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0% {
+      box-shadow: 0 0 0 0 rgba(var(--primary), 0.4);
+    }
+    70% {
+      box-shadow: 0 0 0 10px rgba(var(--primary), 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(var(--primary), 0);
+    }
+  }
+
+  /* Enhance touch feedback */
+  a:active,
+  button:active {
+    transform: scale(0.97);
+  }
+}
+
+/* Add active states for touch devices */
+@media (hover: none) {
+  .group:active .group-hover\:scale-110 {
+    transform: scale(1.05);
+  }
+
+  .group:active .group-hover\:translate-y-0 {
+    transform: translateY(0);
+  }
+
+  .group:active .group-hover\:opacity-100 {
+    opacity: 1;
+  }
+
+  .group:active .group-hover\:scale-x-100 {
+    transform: scaleX(1);
+  }
 }
