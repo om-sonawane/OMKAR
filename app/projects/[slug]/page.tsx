@@ -49,7 +49,7 @@ const getProjectData = (slug: string) => {
       title: "Vr travelling Website",
       description:
         "A VR travel website that offers immersive virtual tours of popular destinations. Built with javascript, html, and css.",
-      image: "/vrt.jpeg",
+      image: "/vrt2.jpeg",
       technologies: ["Javascript", "Html", "css"],
       liveUrl: "https://vr-travelling-website.vercel.app/",
       githubUrl: "https://github.com/om-sonawane/vr-travelling-website",

@@ -48,24 +48,24 @@ export default function About() {
         <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
           {/* Portrait Image with Animation and Standard Frame */}
           <motion.div
-            className="relative mx-auto md:mx-0 max-w-[280px] sm:max-w-[350px] md:max-w-full"
+            className="relative mx-auto md:mx-0"
             initial={{ x: -100, opacity: 0 }}
             animate={isVisible ? { x: 0, opacity: 1 } : { x: -100, opacity: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <div className="portrait-container">
+            <div className="portrait-container-responsive">
               {/* Cloud decorations around the portrait */}
-              <AnimatedClouds className="top-[-30px] left-[-40px] scale-75" />
-              <AnimatedClouds className="bottom-[-20px] right-[-30px] scale-50" />
+              <AnimatedClouds className="top-[-20px] left-[-30px] scale-75" />
+              <AnimatedClouds className="bottom-[-15px] right-[-25px] scale-50" />
 
               {/* Standard portrait frame */}
-              <div className="portrait-frame standard-frame">
+              <div className="portrait-frame-responsive">
                 <div className="portrait-image">
                   <Image
                     src="profile.jpeg"
                     alt="Profile"
-                    width={500}
-                    height={600}
+                    width={400}
+                    height={400}
                     className="object-cover"
                     priority
                   />
