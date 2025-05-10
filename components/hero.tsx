@@ -30,7 +30,7 @@ export default function Hero() {
           style={{ opacity: theme === "dark" ? 0 : 1 }}
         />
         <Image
-          src="/dclou.jpeg"
+          src="/darkk.jpeg"
           alt="Night clouds background"
           fill
           priority
