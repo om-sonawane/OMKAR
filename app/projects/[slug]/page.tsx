@@ -51,8 +51,8 @@ const getProjectData = (slug: string) => {
         "A VR travel website that offers immersive virtual tours of popular destinations. Built with javascript, html, and css.",
       image: "/vrt2.jpeg",
       technologies: ["Javascript", "Html", "css"],
-      liveUrl: "https://vr-travelling-website.vercel.app/",
-      githubUrl: "https://github.com/om-sonawane/vr-travelling-website",
+      liveUrl: "https://vr-trav-nextjs.vercel.app/",
+      githubUrl: "https://github.com/om-sonawane/VR-TRAV-NEXTJS",
 
       details: "VR Traveling Website aims to provide an immersive travel experience through virtual reality. Users can explore various locations as if they were physically there, using 360-degree images or videos.",
       challenges: "Ensuring users feel engaged rather than just watching static 360° images.",
