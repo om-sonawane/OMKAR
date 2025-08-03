@@ -13,7 +13,7 @@ export default function Footer() {
               href="/"
               className="text-xl font-bold text-primary dark:text-primary hover:text-primary-accent dark:hover:text-primary-accent transition-colors"
             >
-              Portfolio
+              OMKAR
             </Link>
             <p className="text-sm text-muted-foreground">Creating elegant digital experiences</p>
           </div>
@@ -51,7 +51,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-6 sm:mt-8 border-t pt-6 sm:pt-8 text-center">
-          <p className="text-sm text-muted-foreground">© {currentYear} Your Name. All rights reserved.</p>
+          <p className="text-sm text-muted-foreground">© {currentYear} OMKAR. All rights reserved.</p>
         </div>
       </div>
     </footer>
