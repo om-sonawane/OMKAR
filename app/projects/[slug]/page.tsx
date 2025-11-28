@@ -37,8 +37,8 @@ const getProjectData = (slug: string) => {
       description:
         "An AI chatbot application that provides users with instant responses to their queries. Built with Python.",
       image: "/aic.jpg",
-      technologies: ["Python", "Tkinter", "Sql"],
-      liveUrl: "https://github.com/om-sonawane/Ai-chatbot",
+      technologies: ["NextJS", "Tailwind CSS", "Gemini-Api"],
+      liveUrl: "https://chatbot-omii.vercel.app/",
       githubUrl: "https://github.com/om-sonawane/Ai-chatbot",
 
       details: "A dashboard that visualizes large datasets using interactive charts, providing insights into key metrics.",
@@ -63,9 +63,9 @@ const getProjectData = (slug: string) => {
       description:
         "The Software Defect Detection project is a tool designed to identify and analyze software bugs efficiently, ensuring improved code quality and reliability. It leverages advanced techniques to streamline the debugging process.",
       image: "/astro.jpg",
-      technologies: ["NextJs", "Tailwind", "Typescript"],
+      technologies: ["NextJs", "Tailwind", "Typescript","Decision-Tree Algorithm  "],
       liveUrl: "https://sdd-omi.vercel.app/",
-      githubUrl: "https://github.com/om-sonawane/Weather-App",
+      githubUrl:"https://github.com/om-sonawane/Software-Defect-Detection-Nextjs",
 
       details: "A machine learning-based system designed to predict software defects by analyzing code metrics such as lines of code, cyclomatic complexity, coupling, cohesion, and historical bug data.",
       challenges: "Imbalanced Data: Most datasets contain far more non-defective modules than defective ones, leading to biased model predictions.",

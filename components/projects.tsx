@@ -46,7 +46,7 @@ export default function Projects() {
       id: "project4",
       title: "Vr Travelling Website",
       slug: "project-four",
-      image: "/vr_image.jpg",
+      image: "/vr-travelling.jpg",
       size: "large",
     },
     {
@@ -58,9 +58,9 @@ export default function Projects() {
     },
     {
       id: "project6",
-      title: "portfolio",
+      title: "Portfolio",
       slug: "project-six",
-      image: "/port.jpg",
+      image: "/porto-2.jpg",
       size: "small",
     },
   ]
